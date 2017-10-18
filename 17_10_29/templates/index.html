@@ -2,7 +2,26 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>么么么哒的登录~(づ￣ 3￣)づ</title>
+    <title>(づ￣ 3￣)づ~么么么哒的登录~</title>
+	<script src="{{ url_for('static', filename='/js/jquery.min.js') }}"></script>
+	<script>
+		function ajaxSubmit() {
+			$.ajax( {
+				url : '/',
+				type : 'POST',
+				dataType : 'json',
+				data : {
+					'username' : $('input[name="username"]').val(),
+					'password' : $('input[name="password"]').val()
+				},
+				success : function(data) {
+					$('#message').text(data.message);
+				}
+			} );
+			alert('hh');
+			return false;
+		}
+	</script>
 	<style>
 		body {
 			text-align: center;
@@ -10,10 +29,14 @@
 	</style>
 </head>
 <body>
-    <form action="" method="post" onsubmit="return ajaxSubmit">
+	{% if error %}
+	<p>Error : {{ error }}</p>
+	{% endif %}
+    <form action="" method="post" onsubmit="return ajaxSubmit()">
         <p>Username: <input name="username" type="text" /></p>
         <p>Password: <input name="password" type="password" /></p>
         <input type="submit" value="Submit" />
     </form>
+	<p><span id="message"></span></p>
 </body>
 </html>
