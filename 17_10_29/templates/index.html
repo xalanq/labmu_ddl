@@ -15,24 +15,27 @@
 					'password' : $('input[name=password]').val(),
 				},
 				success : function(data) {
-					$('#message').text(data.message);
+					$('#message').text(data.message + ' ' + data.name);
 				},
 			} );
 		}
 	</script>
 	<style>
-		body {
-			text-align: center;
-		}
+        .widget-center {
+        	position: absolute;
+        	top: 50%;
+        	left: 50%;
+        	margin-left: -125px;
+        	margin-top: -67px;
+        }
 	</style>
 </head>
 <body>
-	{% if error %}
-	<p>Error : {{ error }}</p>
-	{% endif %}
-    <p>Username: <input name="username" type="text" /></p>
-    <p>Password: <input name="password" type="password" /></p>
-    <button onclick="submit()">Submit</button>
-	<p><span id="message"></span></p>
+    <div class="widget-center">
+        <p>Username: <input name="username" type="text" /></p>
+        <p>Password: <input name="password" type="password" /></p>
+        <button onclick="submit()">Submit</button>
+        <p><span id="message"></span></p>
+    </div>
 </body>
 </html>

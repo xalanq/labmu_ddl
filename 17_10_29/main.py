@@ -23,12 +23,14 @@ def index():
 		user_pass = my_password_hash(request.form.get('password', 'null'))
 		if user_auth.get(user_name) == user_pass:
 			return jsonify(name=user_name, message="Welcome!!")
-		return render_template('index.html', error="Invalid Username or Password.")
+		return jsonify(name='', message="Invalid Username or Password.")
 	else:
-		return render_template('index.html', error=None)
+		return render_template('index.html')
 
 
 if __name__ == '__main__':
-	user_auth['admin'] = my_password_hash('123')
+	user_auth['a'] = my_password_hash('123')
+	user_auth['b'] = my_password_hash('123')
+	user_auth['c'] = my_password_hash('123')
 	# app.debug = True
 	app.run()
