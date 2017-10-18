@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>(づ￣ 3￣)づ~么么么哒的登录~</title>
-	<script src="{{ url_for('static', filename='/js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 	<script>
 		function ajaxSubmit() {
 			$.ajax( {
-				url : '/',
 				type : 'POST',
+				url : '/',
 				dataType : 'json',
 				data : {
-					'username' : $('input[name="username"]').val(),
-					'password' : $('input[name="password"]').val()
+					'username' : $('input[name=username]').val(),
+					'password' : $('input[name=password]').val(),
 				},
 				success : function(data) {
+					alert('hh');
 					$('#message').text(data.message);
-				}
+				},
 			} );
 			alert('hh');
 			return false;

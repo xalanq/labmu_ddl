@@ -27,6 +27,8 @@ def index():
 	else:
 		return render_template('index.html', error=None)
 
+
 if __name__ == '__main__':
 	user_auth['admin'] = my_password_hash('123')
+	app.debug = True
 	app.run()
