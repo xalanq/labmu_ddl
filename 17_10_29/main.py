@@ -21,7 +21,6 @@ def index():
 	if request.method == 'POST':
 		user_name = request.form.get('username', 'null')
 		user_pass = my_password_hash(request.form.get('password', 'null'))
-		return jsonify(name=user_name, message="Welcome!!")
 		if user_auth.get(user_name) == user_pass:
 			return jsonify(name=user_name, message="Welcome!!")
 		return render_template('index.html', error="Invalid Username or Password.")
@@ -31,5 +30,5 @@ def index():
 
 if __name__ == '__main__':
 	user_auth['admin'] = my_password_hash('123')
-	app.debug = True
+	# app.debug = True
 	app.run()
