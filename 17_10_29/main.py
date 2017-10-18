@@ -21,6 +21,7 @@ def index():
 	if request.method == 'POST':
 		user_name = request.form.get('username', 'null')
 		user_pass = my_password_hash(request.form.get('password', 'null'))
+		return jsonify(name=user_name, message="Welcome!!")
 		if user_auth.get(user_name) == user_pass:
 			return jsonify(name=user_name, message="Welcome!!")
 		return render_template('index.html', error="Invalid Username or Password.")
